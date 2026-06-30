@@ -1,0 +1,1 @@
+Remove-Item "C:\Tools\runx\runx.exe"
