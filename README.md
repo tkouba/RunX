@@ -233,6 +233,19 @@ Returns the same exit code as the executed script.
 
 ---
 
+## Releasing
+
+Releases are published automatically via GitHub Actions when a version tag is pushed.
+
+```text
+git tag v1.2.3
+git push origin v1.2.3
+```
+
+The pipeline compiles the version number into the executable and publishes `runx.exe` as a GitHub Release with auto-generated release notes.
+
+---
+
 ## Status
 
 MVP design – simple, practical, extensible.
