@@ -12,6 +12,31 @@ It improves usability of Windows scripting by providing:
 
 ---
 
+## Installation
+
+The installation script downloads the latest RunX release from GitHub, 
+installs it into the appropriate location, and adds the installation folder to `PATH`.
+
+- When run as a regular user, RunX is installed to `%LOCALAPPDATA%\runx`.
+- When run as Administrator, RunX is installed to `C:\Tools` and becomes available to all users.
+
+```powershell
+irm https://raw.githubusercontent.com/tkouba/RunX/refs/heads/master/install.ps1 | iex
+```
+
+## Uninstallation
+
+The uninstallation script removes runx.exe from both user and machine installation locations.
+If the installation directory becomes empty after removing runx.exe, 
+the directory is deleted and the corresponding PATH entry is removed. 
+Non-empty directories are left untouched.
+
+```powershell
+irm https://raw.githubusercontent.com/tkouba/RunX/refs/heads/master/uninstall.ps1 | iex
+```
+
+---
+
 ## Quick Start
 
 ```text
