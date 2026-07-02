@@ -1,5 +1,14 @@
 # AGENTS.md – Development Guidelines for run.exe
 
+## Code Style
+
+### Type names vs aliases
+- **Declarations, casts, type annotations** → C# alias: `int`, `string`, `bool`, `double`
+- **Static methods, static properties, constants** → BCL class name: `Int32.TryParse`, `String.IsNullOrEmpty`, `String.Empty`, `Double.NaN`
+
+### Null and length checks
+- Prefer explicit checks: `value != null && value.Length > 0` over pattern matching `value is { Length: > 0 }`
+
 ## Philosophy
 
 The runner must:
