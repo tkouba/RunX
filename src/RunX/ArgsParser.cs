@@ -47,9 +47,9 @@ internal static class ArgsParser
                 case "--shell":
                     if (i + 1 >= args.Length) { Error("--shell requires a value"); return null; }
                     shell = args[++i];
-                    if (shell is not ("pwsh" or "powershell" or "cmd" or "auto"))
+                    if (!ShellResolver.IsKnownShell(shell) && !String.Equals(shell, "auto", StringComparison.OrdinalIgnoreCase))
                     {
-                        Error($"--shell value '{shell}' is invalid; expected pwsh, powershell, cmd, or auto");
+                        Error($"--shell value '{shell}' is invalid; expected one of: {string.Join(", ", ShellResolver.KnownShellNames())} or auto");
                         return null;
                     }
                     break;
