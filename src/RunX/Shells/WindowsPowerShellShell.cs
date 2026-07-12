@@ -9,7 +9,8 @@ internal sealed class WindowsPowerShellShell : IShell
     public bool IsInstalled() => ShellHelper.ExistsOnPath("powershell") || ExistsAtKnownPath();
 
     public bool CanRun(string scriptPath) =>
-        Path.GetExtension(scriptPath).Equals(".ps1", StringComparison.OrdinalIgnoreCase);
+        Path.GetExtension(scriptPath).Equals(".ps1", StringComparison.OrdinalIgnoreCase)
+        && !String.Equals(ShellHelper.GetRequiredPSEdition(scriptPath), "Core", StringComparison.OrdinalIgnoreCase);
 
     public ProcessStartInfo CreateProcessStartInfo(string scriptPath, IEnumerable<string> scriptArguments)
     {
