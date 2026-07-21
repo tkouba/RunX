@@ -9,7 +9,8 @@ internal sealed class PwshShell : IShell
     public bool IsInstalled() => ShellHelper.ExistsOnPath("pwsh") || ExistsAtKnownPath();
 
     public bool CanRun(string scriptPath) =>
-        Path.GetExtension(scriptPath).Equals(".ps1", StringComparison.OrdinalIgnoreCase);
+        Path.GetExtension(scriptPath).Equals(".ps1", StringComparison.OrdinalIgnoreCase)
+        && !String.Equals(ShellHelper.GetRequiredPSEdition(scriptPath), "Desktop", StringComparison.OrdinalIgnoreCase);
 
     public ProcessStartInfo CreateProcessStartInfo(string scriptPath, IEnumerable<string> scriptArguments)
     {

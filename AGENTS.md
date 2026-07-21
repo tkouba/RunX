@@ -95,6 +95,15 @@ Runner handles:
 
 ---
 
+### Tests
+
+Each feature has a test in a dedicated subdirectory under `tests/`. Every test directory contains:
+
+- `runx.bat` — invokes `runx.exe` with the appropriate parameters. The `runx.exe` command line must be undecorated (no `@` prefix) so it is visible in output. Verification lines are hidden with a `@` prefix or an inline `@echo off` block. The file must end with `@exit /b %ERRORLEVEL%` to propagate the exit code.
+- `test.*` — the script under test. It prints `OK: <message>` or `FAIL: <message>` to stdout and exits with `0` (pass) or non-zero (fail). Tests that need post-run inspection may include a separate `verify.*` script.
+
+---
+
 ## Shell Resolution Rules
 
 ### auto
